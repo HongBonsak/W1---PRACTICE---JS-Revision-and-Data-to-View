@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master - Interactive Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav id="menu" class="menu hidden">
+        <div class="menu-container">
+            <div class="logo">Quiz Master</div>
+            <div class="menu-items">
+                <a href="#" data-view="player" class="menu-item active">
+                    <span class="icon">▶</span>
+                    <span>Play Quiz</span>
+                </a>
+                <a href="#" data-view="editor" class="menu-item">
+                    <span class="icon">✎</span>
+                    <span>Edit Questions</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Start View -->
+    <div id="start" class="view">
+        <div class="start-container">
+            <div class="hero-section">
+                <h1 class="title">Quiz Master</h1>
+                <p class="subtitle">Test your knowledge with our interactive quiz</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="questionCount">10</span>
+                        <span class="stat-label">Questions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100</span>
+                        <span class="stat-label">Max Points</span>
+                    </div>
+                </div>
+            </div>
+            <button id="startBtn" class="btn btn-primary btn-large">
+                Start Quiz
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz View -->
+    <div id="quiz" class="view hidden">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <div class="question-counter">
+                    Question <span id="questionNumber">1</span> of <span id="totalQuestions">10</span>
+                </div>
+                <div class="score-display">
+                    Score: <span id="currentScore">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+            </div>
+
+            <div class="question-section">
+                <h2 id="questionText" class="question-text">Question will appear here</h2>
+                <div id="answersContainer" class="answers-container">
+                    <!-- Answer buttons will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Score View -->
+    <div id="scoreContainer" class="view hidden">
+        <div class="score-container">
+            <div class="score-card">
+                <div class="emoji-display" id="emojiDisplay">🎉</div>
+                <h2 class="score-title">Quiz Complete!</h2>
+                <div class="final-score">
+                    <span class="score-label">Your Score</span>
+                    <span class="score-value" id="finalScore">0</span>
+                    <span class="score-max">out of 100</span>
+                </div>
+                <div class="score-message" id="scoreMessage">Great job!</div>
+                <div class="action-buttons">
+                    <button id="restartBtn" class="btn btn-primary">
+                        Play Again
+                        <span class="btn-arrow">↻</span>
+                    </button>
+                    <button id="editQuestionsBtn" class="btn btn-secondary">
+                        Edit Questions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Editor View -->
+    <div id="editor" class="view hidden">
+        <div class="editor-container">
+            <div class="editor-header">
+                <h2 class="editor-title">Question Editor</h2>
+                <button id="addQuestionBtn" class="btn btn-primary">
+                    <span class="icon">+</span>
+                    Add New Question
+                </button>
+            </div>
+            
+            <div id="questionsList" class="questions-list">
+                <!-- Question cards will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Dialog -->
+    <div id="editDialog" class="dialog-overlay hidden">
+        <div class="dialog">
+            <div class="dialog-header">
+                <h3 id="dialogTitle">Edit Question</h3>
+                <button id="closeDialog" class="close-btn">×</button>
+            </div>
+            <div class="dialog-body">
+                <div class="form-group">
+                    <label for="questionInput">Question</label>
+                    <input type="text" id="questionInput" class="form-input" placeholder="Enter your question">
+                </div>
+                
+                <div class="form-group">
+                    <label>Answers</label>
+                    <div id="answersInputContainer" class="answers-input-container">
+                        <!-- Answer inputs will be generated here -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="correctAnswerSelect">Correct Answer</label>
+                    <select id="correctAnswerSelect" class="form-select">
+                        <option value="0">Answer 1</option>
+                        <option value="1">Answer 2</option>
+                        <option value="2">Answer 3</option>
+                        <option value="3">Answer 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="cancelBtn" class="btn btn-secondary">Cancel</button>
+                <button id="saveBtn" class="btn btn-primary">Save Question</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="player.js"></script>
+    <script src="editor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
